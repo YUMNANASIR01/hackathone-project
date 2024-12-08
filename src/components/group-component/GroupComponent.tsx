@@ -85,7 +85,7 @@ const GroupComponent: NextPage<GroupComponentType> = ({
                   width={20}
                   height={20}
                   alt=""
-                  src={dashiconsadminUsers}
+                  src="/admin.png"
                 />
               </div>
               <div
@@ -106,7 +106,7 @@ const GroupComponent: NextPage<GroupComponentType> = ({
                 width={20}
                 height={20}
                 alt=""
-                src={uiscalender}
+                src="/date.png"
               />
               <div className="relative">14 Oct 2022</div>
             </div>
@@ -122,7 +122,7 @@ const GroupComponent: NextPage<GroupComponentType> = ({
                 width={24}
                 height={24}
                 alt=""
-                src={citag}
+                src="/wood.png"
               />
               <div className="relative">{wood}</div>
             </div>
