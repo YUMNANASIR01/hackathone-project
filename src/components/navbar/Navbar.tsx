@@ -12,12 +12,12 @@ export default function Navbar() {
       {/* Main container for Navbar */}
       <div className="max-w-[1286px] mx-auto px-4 flex items-center justify-between h-[41px] mt-[29px] ml-[54px] sm:mt-6 sm:ml-4">
         {/* Logo Section */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 mb-10 ">
           <div className="w-[50px] h-[32px]">
             <div className="w-full h-full" />
-          </div>
-          <h1 className="text-[34px] font-bold font-montserrat text-black flex items-center gap-4">
-            <div className="mt-4 sm:mt-10">
+          </div> 
+          <h1 className="text-[34px] font-bold font-montserrat text-black flex items-center gap-4 mt-7">
+            <div className="mt-9 sm:mb-8">
               <Image src={'/logo.png'} alt={'Logo'} height={32} width={50} />
             </div>
             Furniro
