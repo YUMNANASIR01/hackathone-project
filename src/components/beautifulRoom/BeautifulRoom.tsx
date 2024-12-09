@@ -3,12 +3,18 @@ import Image from 'next/image'
 export default function BeautifulRoom() {
   
   return (
-    <section className="relative overflow-x-hidden-hidden flex gap-[34px] justify-between items-center py-[44px]">
+    <section className="relative  flex flex-col gap-[34px] justify-between items-center py-[44px]
+    lg:flex-row
+    ">
       {/* background div */}
-      <div className='absolute -z-10 left-0 top-0 w-[1170px] h-[670px] bg-[#FCF8F3]'></div>
+      <div className='absolute -z-10 left-0 top-0 w-[1170px]  bg-[#806036] '></div>
 
       {/* left text */}
-      <div className="flex flex-col gap-4 w-[343px] ml-[81px]">
+      <div className="flex flex-col gap-4 w-[343px] 
+      xsm:ml-[50px] 
+      md:ml-[81px]
+      
+      ">
         <h1 className="text-[40px] leading-[48px] font-bold">50+ Beautiful rooms 
         inspiration</h1>
         <p>Our designer already made a lot of beautiful prototipe of rooms that inspire you</p>
@@ -16,7 +22,11 @@ export default function BeautifulRoom() {
       </div>
 
       {/* right div */}
-      <div className="flex gap-[20] ">
+      <div className="flex flex-col gap-[20]
+      lg:flex-row
+      xsm:ml-[50px]
+      
+      ">
 
         {/* 1 */}
         <div className=" relative w-[328px] h-[582px]">
@@ -25,12 +35,12 @@ export default function BeautifulRoom() {
 
         {/* 2 */}
         <div className=" relative w-[302px] h-[486px]">
-          <Image src="/room2.png" alt="room1" layout='fill' objectFit="cover"></Image>
+          <Image src="/room2.png" alt="room2" layout='fill' objectFit="cover"></Image>
         </div>
         
         {/* 3 */}
         <div className=" relative w-[302px] h-[486px]">
-          <Image src="/room1.png" alt="room1" layout='fill' objectFit="cover"></Image>
+          <Image src="/room3.png" alt="room3" layout='fill' objectFit="cover"></Image>
         </div>
 
       </div>

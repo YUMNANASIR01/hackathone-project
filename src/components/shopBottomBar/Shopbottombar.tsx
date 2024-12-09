@@ -4,7 +4,7 @@ import Image from 'next/image'
 function Shopbottombar() {
   return (
     <>
-      <section className="w-full h-[207px] flex items-center justify-center bg-[#f9f1e7]">
+      <section className=" hidden md:flex w-full h-[207px]  items-center justify-center bg-[#f9f1e7]">
         {/* Main container */}
         <div className="w-full max-w-screen-xl flex m-auto gap-4 px-4">
           {/* 1st Div - High Quality */}

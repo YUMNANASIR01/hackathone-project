@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 export type FooterType = {
   className?: string;
 };
-
 const Footer1: NextPage<FooterType> = ({ className = "" }) => {
   return (
     <div
@@ -24,7 +23,6 @@ const Footer1: NextPage<FooterType> = ({ className = "" }) => {
               <p>FL 33134 USA</p>
             </div>
           </div>
-
           {/* Links Section */}
           <div className="h-auto w-full md:w-[352px] flex flex-col md:flex-row items-start justify-start gap-8 text-gray-600">
             <div className="flex flex-col gap-4">

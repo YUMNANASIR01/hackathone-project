@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge"
 import { products } from "@/constant/product"
 import Shopmainimage from "@/components/shopMainImage/Shopmainimage"
 import Shopbottombar from "@/components/shopBottomBar/Shopbottombar"
-
 export default function ProductGrid() {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("id-ID", {
@@ -63,9 +62,7 @@ export default function ProductGrid() {
                   )}
                 </div>
                 <Button className="w-full md:w-auto">
-                  <ShoppingCart className="mr-2 h-4 w-4" />
-                  Add to cart
-                </Button>
+                  <ShoppingCart className="mr-2 h-4 w-4" />  Add to cart </Button>
               </CardFooter>
             </Card>
           ))}

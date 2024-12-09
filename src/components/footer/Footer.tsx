@@ -4,7 +4,7 @@ export default function Footer() {
       {/* Container for the footer */}
       <div className="container px-4 md:px-10 lg:px-24 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 mt-8">
-          
+
           {/* Company Info Section */}
           <div className="space-y-4">
             <h2 className="text-2xl font-bold font-poppins mb-4 md:mb-7">Funiro.</h2>
@@ -14,7 +14,6 @@ export default function Footer() {
               FL 33134 USA
             </p>
           </div>
-
           {/* Links Section */}
           <div className="space-y-4">
             <h3 className="text-gray-500 font-poppins font-medium mb-4 md:mb-7">Links</h3>
@@ -44,9 +43,7 @@ export default function Footer() {
               <a href="#" className="text-black font-poppins font-medium hover:text-gray-700">
                 Returns
               </a>
-              <a href="#" className="text-black font-poppins font-medium hover:text-gray-700">
-                Privacy Policies
-              </a>
+              <a href="#" className="text-black font-poppins font-medium hover:text-gray-700">  Privacy Policies</a>
             </nav>
           </div>
 
@@ -63,12 +60,9 @@ export default function Footer() {
                 />
               </div>
               {/* Subscribe Button */}
-              <button className="border-b border-black pb-1 text-sm font-poppins font-medium">
-                SUBSCRIBE
-              </button>
+              <button className="border-b border-black pb-1 text-sm font-poppins font-medium">  SUBSCRIBE </button>
             </div>
           </div>
-
         </div>
 
         {/* Bottom Section (Copyright) */}

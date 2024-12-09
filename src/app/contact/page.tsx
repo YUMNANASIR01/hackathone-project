@@ -14,10 +14,7 @@ export default function ContactPage() {
           <div className="inline-block w-16 h-16 bg-[url('/logo1.png')] mb-4" />
           <h1 className="text-3xl md:text-4xl font-medium mb-4">Contact</h1>
           <div className="flex items-center justify-center gap-2 text-sm">
-            <a href="#" className="hover:underline">
-              Home
-            </a>
-            <span>
+            <a href="#" className="hover:underline"> Home</a><span>
               <Image src={"/rightA.png"} width={20} height={20} alt="arrow" />
             </span>
             <span>Contact</span>
@@ -89,9 +86,7 @@ export default function ContactPage() {
                 <label className="font-medium mb-2 block">Message</label>
                 <Textarea placeholder="Hi! I'd like to ask about..." className="min-h-[120px]" />
               </div>
-              <Button className="w-full md:w-auto bg-[#B88E2F] hover:bg-[#B88E2F]/90">
-                Submit
-              </Button>
+              <Button className="w-full md:w-auto bg-[#B88E2F] hover:bg-[#B88E2F]/90">   Submit </Button>
             </form>
           </div>
         </div>

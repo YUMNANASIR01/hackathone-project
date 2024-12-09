@@ -2,7 +2,6 @@
 import type { NextPage } from "next";
 import { useCallback } from "react";
 import Image from "next/image";
-
 import GroupComponent1 from "@/components/group-component1/GroupComponent1";
 import GroupComponent from "@/components/group-component/GroupComponent";
 import Shopbottombar from "@/components/shopBottomBar/Shopbottombar";
@@ -11,13 +10,10 @@ const Blog: NextPage = () => {
   const onAccordionHeaderClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
       const element = event.target as HTMLElement;
-
       const accItem = element.closest("[data-acc-item]") as HTMLElement;
       const accContent = accItem?.querySelector("[data-acc-content]") as HTMLElement;
       const isOpen = accItem?.hasAttribute("data-acc-open");
-
       if (!accContent) return;
-
       if (isOpen) {
         accItem.removeAttribute("data-acc-open");
         accContent.classList.add("grid-rows-[0fr]");
@@ -25,8 +21,7 @@ const Blog: NextPage = () => {
         accItem.setAttribute("data-acc-open", "true");
         accContent.classList.remove("grid-rows-[0fr]");
       }
-    },
-    []
+    },   []
   );
 
   return (
@@ -41,26 +36,22 @@ const Blog: NextPage = () => {
               uiscalender="/uiscalender.svg"
               citag="/citag.svg"
               wood="Wood"
-              goingAllInWithMillennialDesign="Going all-in with millennial design"
-            />
+              goingAllInWithMillennialDesign="Going all-in with millennial design" />
             <GroupComponent
               thumbnailImages="/blogPen.png"
               dashiconsadminUsers="/dashiconsadminusers-1.svg"
               uiscalender="/uiscalender-1.svg"
               citag="/citag-1.svg"
               wood="Handmade"
-              goingAllInWithMillennialDesign="Exploring new ways of decorating"
-            />
+              goingAllInWithMillennialDesign="Exploring new ways of decorating"/>
             <GroupComponent
               thumbnailImages="/blogPen1.png"
               dashiconsadminUsers="/dashiconsadminusers-2.svg"
               uiscalender="/uiscalender-2.svg"
               citag="/citag-2.svg"
               wood="Wood"
-              goingAllInWithMillennialDesign="Handmade pieces that took time to make"
-            />
+              goingAllInWithMillennialDesign="Handmade pieces that took time to make" />
           </div>
-
           <aside className="w-full lg:w-1/3 flex flex-col gap-6">
             <div className="bg-white border border-darkgray rounded-lg p-4">
               <h3 className="text-2xl font-semibold mb-4">Categories</h3>

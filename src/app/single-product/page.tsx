@@ -34,10 +34,8 @@ function Singleproduct() {
 
       {/* Main Product Section */}
       <Spmain />
-
       {/* Product Details Section */}
       <Productdetails />
-
       {/* Related Products Section */}
       <Relatedproducts />
     </>
