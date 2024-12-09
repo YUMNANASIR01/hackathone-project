@@ -10,14 +10,14 @@ export default function Navbar() {
   return (
     <nav className="relative w-full bg-white">
       {/* Main container for Navbar */}
-      <div className="max-w-[1286px] mx-auto px-4 flex items-center justify-between h-[41px] mt-[29px] ml-[54px]">
+      <div className="max-w-[1286px] mx-auto px-4 flex items-center justify-between h-[41px] mt-[29px] ml-[54px] sm:mt-6 sm:ml-4">
         {/* Logo Section */}
         <div className="flex items-center gap-1">
           <div className="w-[50px] h-[32px]">
             <div className="w-full h-full" />
           </div>
           <h1 className="text-[34px] font-bold font-montserrat text-black flex items-center gap-4">
-            <div>
+            <div className="mt-4 sm:mt-10">
               <Image src={'/logo.png'} alt={'Logo'} height={32} width={50} />
             </div>
             Furniro
@@ -50,7 +50,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile View - Hamburger Menu */}
-      <div className="sm:hidden flex items-center justify-between px-4 py-2">
+      <div className="sm:hidden flex items-center justify-between px-4 py-2 mt-10"> 
         <button
           aria-label="Menu"
           className="p-2"
@@ -74,14 +74,14 @@ export default function Navbar() {
           menuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex flex-col items-center gap-4 py-4">
+        <div className="flex flex-col items-center gap-4 py-4 mr-10 ">
           {/* Close Button inside Mobile Menu */}
           <button
             aria-label="Close Menu"
             className="self-end text-2xl font-bold"
             onClick={() => setMenuOpen(false)}
           >
-            ×
+            × 
           </button>
           <Link href="/" className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link href="/shop" className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors" onClick={() => setMenuOpen(false)}>Shop</Link>
@@ -92,3 +92,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
