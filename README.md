@@ -134,6 +134,9 @@ The **SmartShop App** is distributed under the [MIT License](LICENSE). You are f
 Wishing you all the best on your development journey! Embrace the challenges, learn continuously, and make the most of every moment. Stay creative and code with passion!
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> c4abaea6398e2a7b5811c0cdbd422eed8c37f604
