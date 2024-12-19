@@ -120,7 +120,7 @@ export default function RelatedProducts() {
         {/* "Show More" button */}
         <div className="flex justify-center mt-10">
           <Link
-            href="#"
+            href="/shop"
             className="inline-flex items-center justify-center px-8 py-3 border border-[#b88e2f] hover:bg-[#b88e2f] hover:text-white transition-colors text-[#b88e2f]"
           >
             Show More

@@ -1,212 +1,138 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { MinusIcon, PlusIcon, Star, StarHalf } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
-import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button";
+import { MinusIcon, PlusIcon, Star, StarHalf } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import React from "react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { products } from "@/constant/pro1";
 
-interface ProductImage {
-  src: string
-  alt: string
-}
 
-export default function Spmain() {
-  const [selectedImage, setSelectedImage] = React.useState(0)
-  const [quantity, setQuantity] = React.useState(1)
 
-  const productImages: ProductImage[] = [
-    { src: "/sp1.png", alt: "Asgaard sofa front view" },
-    { src: "/sp2.png", alt: "Asgaard sofa side view" },
-    { src: "/sp3.png", alt: "Asgaard sofa detail view" },
-    { src: "/sp4.png", alt: "Asgaard sofa back view" },
-  ]
+
+
+ function Spmain(props:{id:number}) {
+
+  
+  console.log("------------>",props)
+  
+
+  const data = products[props.id];
+
+
+  console.log("😎😍",data)
+  
 
   return (
-    <div className="container mx-auto px-4 py-8 mb-[58px]">
-      {/* Main content grid, responsive for mobile and tablet */}
-      <div className="grid gap-8 md:grid-cols-2">
-        
-        {/* Image section (Thumbnails + Main Image) */}
-        <div className="flex gap-4 flex-col md:flex-row">
-          {/* Thumbnails for product images */}
-          <div className="flex gap-4 overflow-x-auto md:flex-col">
-            {productImages.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedImage(index)}
-                className={cn(
-                  "border-2 rounded-lg overflow-hidden",
-                  selectedImage === index ? "border-primary" : "border-transparent"
-                )}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={100}
-                  height={100}
-                  className="object-cover"
-                />
-              </button>
+    <div className="w-full mt-[30px] mb-[100px] px-4 md:px-6 lg:px-10">
+    <div className="m-auto flex flex-col  lg:flex-row gap-10 lg:justify-center ">
+      {/* Product Images Section */}
+      <div className="flex flex-col items-center justify-center lg:items-start lg:flex-row gap-[31px] lg:w-1/2">
+        <div className="flex flex-row lg:flex-col gap-4">
+          {[...Array(4)].map((_, index) => (
+            <Image
+              key={index}
+              src={data.src}
+              alt="mainImage"
+              width={76}
+              height={80}
+              className="w-[60px] h-[60px] rounded-xl md:w-[76px] md:h-[80px] object-cover"
+            />
+          ))}
+        </div>
+  
+        <div className="relative w-full max-w-[300px] md:max-w-[423px] h-[300px] md:h-[500px] rounded-lg">
+          <Image
+            src={data.src}
+            alt="mainImage"
+            objectFit="cover"
+            fill
+            className="w-full h-full rounded-lg"
+          />
+        </div>
+      </div>
+  
+      {/* Product Details Section */}
+      <div className="w-full lg:w-[606px]  space-y-6 ">
+        {/* Product Title and Price */}
+        <div className="text-center lg:text-left">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">{data.name}</h1>
+          <p className="text-lg sm:text-2xl text-muted-foreground mt-2">Rs. {data.price}</p>
+        </div>
+  
+        {/* Product Rating and Review */}
+        <div className="flex items-center justify-center lg:justify-start gap-2">
+          <div className="flex">
+            {[...Array(4)].map((_, i) => (
+              <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-[#FFC700] text-primary" />
+            ))}
+            <StarHalf className="w-4 h-4 sm:w-5 sm:h-5 fill-primary text-primary" />
+          </div>
+          <span className="text-sm text-muted-foreground">|</span>
+          <span className="text-sm text-muted-foreground">5 Customer Review</span>
+        </div>
+  
+        {/* Product Description */}
+        <p className="text-sm sm:text-base text-muted-foreground">
+          Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.
+        </p>
+  
+        {/* Size Selection */}
+        <div>
+          <h3 className="font-medium mb-2">Size</h3>
+          <RadioGroup defaultValue="L" className="flex gap-2 sm:gap-4 justify-center lg:justify-start">
+            {["L", "XL", "XS"].map((size) => (
+              <div key={size}>
+                <RadioGroupItem value={size} id={size} className="peer sr-only" />
+                <Label htmlFor={size} className="px-3 py-1 sm:px-4 sm:py-2 border rounded-md hover:bg-yellow-500 cursor-pointer">
+                  {size}
+                </Label>
+              </div>
+            ))}
+          </RadioGroup>
+        </div>
+  
+        {/* Color Selection */}
+        <div>
+          <h3 className="font-medium mb-2">Color</h3>
+          <div className="flex gap-4 justify-center lg:justify-start">
+            {["#816dfa", "black", "#b88e2f"].map((color) => (
+              <div key={color} className="w-[30px] h-[30px] rounded-full" style={{ backgroundColor: color }}></div>
             ))}
           </div>
-
-          {/* Main product image */}
-          <div className="flex-1">
-            <Image
-              src={productImages[selectedImage].src}
-              alt={productImages[selectedImage].alt}
-              width={600}
-              height={600}
-              className="w-full h-auto rounded-lg"
-            />
-          </div>
         </div>
-
-        {/* Product details section */}
-        <div className="space-y-6">
-          <div>
-            <h1 className="text-4xl font-bold">Asgaard sofa</h1>
-            <p className="text-2xl text-muted-foreground mt-2">Rs. 250,000.00</p>
+  
+        {/* Quantity and Buttons */}
+        <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-3 items-center justify-center lg:justify-start">
+          <div className="flex items-center border rounded-md w-[100px] sm:w-[123px] h-[48px] sm:h-[64px]">
+            <Button variant="ghost" size="icon" className="rounded-none">
+              <MinusIcon className="w-4 h-4" />
+            </Button>
+            <span className="w-8 sm:w-12 text-center">1</span>
+            <Button variant="ghost" size="icon" className="rounded-none">
+              <PlusIcon className="w-4 h-4" />
+            </Button>
           </div>
+  
+          <Link href="/cart">
+            <Button variant={"outline"} className="w-full sm:w-[215px] h-[48px] sm:h-[64px] rounded-md sm:rounded-[15px]">Add To Cart</Button>
+          </Link>
+  
+          
+          <Link href={`/productComparison?id=${data.id}`}>
+            <Button variant="outline" className="w-full sm:w-[215px] h-[48px] sm:h-[64px] rounded-md sm:rounded-[15px]">+ Compare</Button>
+          </Link>
 
-          {/* Product rating and review section */}
-          <div className="flex items-center gap-2">
-            <div className="flex">
-              {[...Array(4)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-[#FFC700] text-primary border-b-[1px] border-[#FFC700] gap-[6px]" />
-              ))}
-              <StarHalf className="w-5 h-5 fill-primary text-primary gap-[6px] border-b-[1px] border-[#FFC700]" />
-            </div>
-            <span className="text-sm text-muted-foreground">5 Customer Review</span>
-          </div>
 
-          {/* Product description */}
-          <p className="text-muted-foreground">
-            Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a
-            well-balanced audio which boasts a clear midrange and extended highs for a sound.
-          </p>
 
-          <div className="space-y-4">
-            {/* Size selection section */}
-            <div>
-              <h3 className="font-medium mb-2">Size</h3>
-              <RadioGroup defaultValue="L" className="flex gap-4">
-                <div>
-                  <RadioGroupItem value="L" id="L" className="peer sr-only" />
-                  <Label
-                    htmlFor="L"
-                    className="px-4 py-2 border rounded-md peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground"
-                  >
-                    L
-                  </Label>
-                </div>
-                <div>
-                  <RadioGroupItem value="XL" id="XL" className="peer sr-only" />
-                  <Label
-                    htmlFor="XL"
-                    className="px-4 py-2 border rounded-md peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground"
-                  >
-                    XL
-                  </Label>
-                </div>
-                <div>
-                  <RadioGroupItem value="XS" id="XS" className="peer sr-only" />
-                  <Label
-                    htmlFor="XS"
-                    className="px-4 py-2 border rounded-md peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground"
-                  >
-                    XS
-                  </Label>
-                </div>
-              </RadioGroup>
-            </div>
-
-            {/* Color selection section */}
-            <div>
-              <h3 className="font-medium mb-2">Color</h3>
-              <RadioGroup defaultValue="purple" className="flex gap-4">
-                <div>
-                  <RadioGroupItem value="purple" id="purple" className="peer sr-only" />
-                  <Label
-                    htmlFor="purple"
-                    className="w-8 h-8 rounded-full bg-purple-500 peer-data-[state=checked]:ring-2 ring-offset-2 ring-purple-500"
-                  />
-                </div>
-                <div>
-                  <RadioGroupItem value="black" id="black" className="peer sr-only" />
-                  <Label
-                    htmlFor="black"
-                    className="w-8 h-8 rounded-full bg-black peer-data-[state=checked]:ring-2 ring-offset-2 ring-black"
-                  />
-                </div>
-                <div>
-                  <RadioGroupItem value="gold" id="gold" className="peer sr-only" />
-                  <Label
-                    htmlFor="gold"
-                    className="w-8 h-8 rounded-full bg-yellow-700 peer-data-[state=checked]:ring-2 ring-offset-2 ring-yellow-700"
-                  />
-                </div>
-              </RadioGroup>
-            </div>
-
-            {/* Quantity and Cart Buttons */}
-            <div className="flex items-center gap-6">
-              <div className="flex items-center border rounded-md w-[123px] h-[64px]">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="rounded-none"
-                >
-                  <MinusIcon className="w-4 h-4" />
-                </Button>
-                <span className="w-12 text-center">{quantity}</span>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="rounded-none "
-                >
-                  <PlusIcon className="w-4 h-4" />
-                </Button>
-              </div>
-              <Button variant="outline" className="w-[215px] h-[64px] rounded-[15px]">Add To Cart</Button>
-              <Button variant="outline" className="w-[215px] h-[64px] rounded-[15px]">+ Compare</Button>
-            </div>
-          </div>
-
-          {/* Product details like SKU, Category, Tags, and Share buttons */}
-          <div className="border-t pt-6 space-y-2">
-            <div className="flex gap-2">
-              <span className="text-muted-foreground">SKU:</span>
-              <span>SS001</span>
-            </div>
-            <div className="flex gap-2">
-              <span className="text-muted-foreground">Category:</span>
-              <span>Sofas</span>
-            </div>
-            <div className="flex gap-2">
-              <span className="text-muted-foreground">Tags:</span>
-              <span>Sofa, Chair, Home, Shop</span>
-            </div>
-            <div className="flex gap-2 items-center">
-              <span className="text-muted-foreground">Share:</span>
-              <div className="flex gap-2">
-                <Link href="#" className="hover:text-primary">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.878c4.78-.751 8.438-4.887 8.438-9.878z" clipRule="evenodd"></path>
-                  </svg>
-                </Link>
-                {/* Add other social icons */}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-  )
+  </div>
+  
+  );
 }
+
+export default Spmain;

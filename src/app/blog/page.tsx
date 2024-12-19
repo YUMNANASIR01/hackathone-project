@@ -1,72 +1,106 @@
-"use client";
-import type { NextPage } from "next";
-import { useCallback } from "react";
-import Image from "next/image";
-import GroupComponent1 from "@/components/group-component1/GroupComponent1";
-import GroupComponent from "@/components/group-component/GroupComponent";
 import Shopbottombar from "@/components/shopBottomBar/Shopbottombar";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
+import Image from "next/image";
 
-const Blog: NextPage = () => {
-  const onAccordionHeaderClick = useCallback(
-    (event: React.MouseEvent<HTMLElement>) => {
-      const element = event.target as HTMLElement;
-      const accItem = element.closest("[data-acc-item]") as HTMLElement;
-      const accContent = accItem?.querySelector("[data-acc-content]") as HTMLElement;
-      const isOpen = accItem?.hasAttribute("data-acc-open");
-      if (!accContent) return;
-      if (isOpen) {
-        accItem.removeAttribute("data-acc-open");
-        accContent.classList.add("grid-rows-[0fr]");
-      } else {
-        accItem.setAttribute("data-acc-open", "true");
-        accContent.classList.remove("grid-rows-[0fr]");
-      }
-    },   []
-  );
+import { Button } from "@/components/ui/button";
+import BlogCenter from "@/components/blogCenter/page";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
+import { RelatedPost } from "@/constant/rp";
 
+export default function Blog() {
   return (
     <div className="w-full relative bg-white flex flex-col items-start justify-start leading-normal tracking-normal">
-      <main className="self-stretch flex flex-col items-start justify-start p-4 sm:p-6 lg:p-8 max-w-full">
-        <GroupComponent1 />
-        <section className="w-full bg-white flex flex-col lg:flex-row items-start justify-start gap-6 lg:gap-10 p-4 sm:p-6 lg:p-10">
-          <div className="flex-1 flex flex-col gap-6">
-            <GroupComponent
-              thumbnailImages="/bloglaptop.png"
-              dashiconsadminUsers="/dashiconsadminusers.svg"
-              uiscalender="/uiscalender.svg"
-              citag="/citag.svg"
-              wood="Wood"
-              goingAllInWithMillennialDesign="Going all-in with millennial design" />
-            <GroupComponent
-              thumbnailImages="/blogPen.png"
-              dashiconsadminUsers="/dashiconsadminusers-1.svg"
-              uiscalender="/uiscalender-1.svg"
-              citag="/citag-1.svg"
-              wood="Handmade"
-              goingAllInWithMillennialDesign="Exploring new ways of decorating"/>
-            <GroupComponent
-              thumbnailImages="/blogPen1.png"
-              dashiconsadminUsers="/dashiconsadminusers-2.svg"
-              uiscalender="/uiscalender-2.svg"
-              citag="/citag-2.svg"
-              wood="Wood"
-              goingAllInWithMillennialDesign="Handmade pieces that took time to make" />
+      <main className="flex flex-col justify-start mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12">
+        {/* heading */}
+
+<section className="bg-[url('/blogMainImage.png')] bg-cover bg-center py-12 md:py-16">
+        <div className="container mx-auto px-4 text-center">
+          <div className="inline-block w-16 h-16 bg-[url('/logo1.png')] mb-4" />
+          <h1 className="text-3xl md:text-4xl font-medium mb-4">Blog</h1>
+          <div className="flex items-center justify-center gap-2 text-sm">
+            <a href="#" className="hover:underline">
+              Home
+            </a>
+            <span>
+              <Image src={"/rightA.png"} width={20} height={20} alt="arrow" />
+            </span>
+            <span>Blog</span>
           </div>
-          <aside className="w-full lg:w-1/3 flex flex-col gap-6">
-            <div className="bg-white border border-darkgray rounded-lg p-4">
-              <h3 className="text-2xl font-semibold mb-4">Categories</h3>
-              <ul className="space-y-2 text-darkgray">
-                <li><a href="#" className="hover:text-black">Crafts</a></li>
-                <li><a href="#" className="hover:text-black">Design</a></li>
-                <li><a href="#" className="hover:text-black">Handmade</a></li>
+        </div>
+      </section>
+
+        
+
+        {/* mainsection */}
+        <section className="w-full mt-6 flex flex-col lg:flex-row items-start justify-start gap-6 lg:gap-10">
+          {/* cards */}
+          <div className="w-full">
+            <BlogCenter />
+          </div>
+
+          {/* sidebar */}
+          <aside className="relative w-full lg:w-1/3 flex flex-col items-center gap-6">
+            <div className="relative w-full">
+              <Input className="mb-6 h-12 w-full" />
+              <div className="absolute top-3 right-4">
+                <Search />
+              </div>
+            </div>
+
+            <div className="bg-white w-full px-6">
+              <h3 className="text-2xl font-semibold mb-6">Categories</h3>
+              <ul className="space-y-4 text-darkgray">
+                <li className="flex justify-between">
+                  <a href="#" className="hover:text-black">Crafts</a>
+                  <p>2</p>
+                </li>
+                <li className="flex justify-between">
+                  <a href="#" className="hover:text-black">Design</a>
+                  <p>8</p>
+                </li>
+                <li className="flex justify-between">
+                  <a href="#" className="hover:text-black">Handmade</a>
+                  <p>7</p>
+                </li>
+                <li className="flex justify-between">
+                  <a href="#" className="hover:text-black">Interior</a>
+                  <p>1</p>
+                </li>
+                <li className="flex justify-between">
+                  <a href="#" className="hover:text-black">Wood</a>
+                  <p>6</p>
+                </li>
               </ul>
+            </div>
+
+            {/* related post */}
+            <div className="border border-darkgray w-full px-6 py-4 mt-6">
+              <h1 className="text-2xl font-medium mb-6">Recent Posts</h1>
+              {RelatedPost.map((item: { src: string | StaticImport; heading: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; date: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, index: Key | null | undefined) => (
+                <div className="flex gap-3 mb-6" key={index}>
+                  <Image src={item.src} width={80} height={80} alt="rp1" />
+                  <div className="flex flex-col">
+                    <p>{item.heading}</p>
+                    <p className="text-gray-400">{item.date}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </aside>
         </section>
+
+        {/* four-button div */}
+        <div className="flex gap-4 items-center justify-center my-8">
+          <Button className="w-12 h-12 text-lg bg-[#b88e2f]">1</Button>
+          <Button className="w-12 h-12 text-lg bg-white text-black">2</Button>
+          <Button className="w-12 h-12 text-lg bg-white text-black">3</Button>
+          <Button className="w-12 h-12 text-lg bg-white text-black">Next</Button>
+        </div>
+
         <Shopbottombar />
       </main>
     </div>
   );
-};
-
-export default Blog;
+}

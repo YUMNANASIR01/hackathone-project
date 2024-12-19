@@ -15,7 +15,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div 
-      className={`group relative w-full max-w-xs sm:max-w-sm lg:max-w-md ${product.id === '2' ? 'overlay-wrapper' : ''}`}
+      className={`group relative w-full max-w-xs sm:max-w-sm exsm:max-w-[320px] lg:max-w-md ${product.id === '2' ? 'overlay-wrapper' : ''}`}
     >
       {/* Card Overlay for ID 2 */}
       {product.id === '2' && (

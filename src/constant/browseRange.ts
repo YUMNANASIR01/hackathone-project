@@ -3,7 +3,8 @@ interface BrowseRange{
     name: string;
 }
 
-export const browseRange = [{
+export const browseRange = [
+{
 
 
 src: "/dining.png",
@@ -17,4 +18,5 @@ name: "Dining",
 {
     src:"/bedroom.png",
     name:"Bedroom",
-}]
+}
+]

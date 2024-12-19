@@ -1,11 +1,53 @@
+"use client";
+
 import Shopbottombar from "@/components/shopBottomBar/Shopbottombar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+
 import { Clock, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const templateParams = {
+      to_name: "Yumna",
+      from_name: name,
+      from_email: email,
+      subject: subject,
+      message: message,
+    };
+
+    try {
+      // Replace the below code with your actual email-sending logic
+      // Example: Use EmailJS, Axios for API calls, etc.
+      await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(templateParams),
+      });
+
+      alert("Email sent successfully");
+
+      // Reset form fields
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    } catch (error) {
+      console.error("Failed to send email", error);
+      alert("Failed to send email. Please try again.");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
@@ -14,7 +56,10 @@ export default function ContactPage() {
           <div className="inline-block w-16 h-16 bg-[url('/logo1.png')] mb-4" />
           <h1 className="text-3xl md:text-4xl font-medium mb-4">Contact</h1>
           <div className="flex items-center justify-center gap-2 text-sm">
-            <a href="#" className="hover:underline"> Home</a><span>
+            <a href="#" className="hover:underline">
+              Home
+            </a>
+            <span>
               <Image src={"/rightA.png"} width={20} height={20} alt="arrow" />
             </span>
             <span>Contact</span>
@@ -29,7 +74,9 @@ export default function ContactPage() {
             Get In Touch With Us
           </h2>
           <p className="text-gray-500 text-center max-w-2xl mx-auto mb-12 md:mb-16">
-            For more information about our products & services, please feel free to drop us an email. Our staff will always be there to help you out. Do not hesitate!
+            For more information about our products & services, please feel
+            free to drop us an email. Our staff will always be there to help you
+            out. Do not hesitate!
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -69,24 +116,48 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <form className="md:col-span-2 space-y-6">
+            <form className="md:col-span-2 space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label className="font-medium mb-2 block">Your name</label>
-                <Input placeholder="Abc" />
+                <Input
+                  placeholder="Abc"
+                  name="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </div>
               <div>
                 <label className="font-medium mb-2 block">Email address</label>
-                <Input placeholder="Abc@def.com" type="email" />
+                <Input
+                  placeholder="Abc@def.com"
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
               <div>
                 <label className="font-medium mb-2 block">Subject</label>
-                <Input placeholder="This is optional" />
+                <Input
+                  placeholder="This is optional"
+                  name="subject"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
               </div>
               <div>
                 <label className="font-medium mb-2 block">Message</label>
-                <Textarea placeholder="Hi! I'd like to ask about..." className="min-h-[120px]" />
+                <Textarea
+                  placeholder="Hi! I'd like to ask about..."
+                  className="min-h-[120px]"
+                  name="message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
               </div>
-              <Button className="w-full md:w-auto bg-[#B88E2F] hover:bg-[#B88E2F]/90">   Submit </Button>
+              <Button className="w-full md:w-auto bg-[#B88E2F] hover:bg-[#B88E2F]/90">
+                Submit
+              </Button>
             </form>
           </div>
         </div>
