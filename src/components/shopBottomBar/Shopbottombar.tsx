@@ -1,88 +1,100 @@
-
 import React from 'react'
 import Image from 'next/image'
 
 function Shopbottombar() {
   return (
-    <>
-      <section className="w-full h-auto items-center justify-center bg-[#f9f1e7] py-8 md:py-0">
-        {/* Main container */}
-        <div className="w-full max-w-screen-xl flex exsm:flex-wrap md:flex-nowrap m-auto gap-8 px-4 justify-center md:justify-between">
+    <section className="w-full bg-[#f9f1e7] py-6 md:py-12">
+      {/* Main container */}
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {/* 1st Div - High Quality */}
-          <div className="flex w-full exsm:w-[300px] xsm:w-[320px] sm:w-[337px] gap-4 items-center">
-            <Image
-              src="/trophy 1.png"
-              alt="trophy"
-              width={60}
-              height={60}
-            />
-            <div className="flex flex-col items-start">
-              <h1 className="font-semibold text-[22px] sm:text-[25px] leading-[30px] sm:leading-[37.5px]">
+          <div className="flex items-center space-x-4 p-4 hover:bg-white/50 rounded-lg transition-colors">
+            <div className="flex-shrink-0">
+              <Image
+                src="/trophy 1.png"
+                alt="trophy"
+                width={48}
+                height={48}
+                className="w-12 h-12 md:w-[60px] md:h-[60px]"
+              />
+            </div>
+            <div className="flex flex-col">
+              <h2 className="font-semibold text-lg md:text-[22px] lg:text-[25px] leading-tight">
                 High Quality
-              </h1>
-              <p className="font-medium text-[18px] sm:text-[20px] text-[#898989] leading-[28px] sm:leading-[30px]">
+              </h2>
+              <p className="font-medium text-sm md:text-lg lg:text-[20px] text-[#898989] leading-snug">
                 crafted from top materials
               </p>
             </div>
           </div>
 
           {/* 2nd Div - Warranty Protection */}
-          <div className="flex w-full exsm:w-[300px] xsm:w-[320px] sm:w-[337px] gap-4 items-center">
-            <Image
-              src="/guarantee.png"
-              alt="guarantee"
-              width={60}
-              height={60}
-            />
-            <div className="flex flex-col items-start">
-              <h1 className="font-semibold text-[22px] sm:text-[25px] leading-[30px] sm:leading-[37.5px]">
+          <div className="flex items-center space-x-4 p-4 hover:bg-white/50 rounded-lg transition-colors">
+            <div className="flex-shrink-0">
+              <Image
+                src="/guarantee.png"
+                alt="guarantee"
+                width={48}
+                height={48}
+                className="w-12 h-12 md:w-[60px] md:h-[60px]"
+              />
+            </div>
+            <div className="flex flex-col">
+              <h2 className="font-semibold text-lg md:text-[22px] lg:text-[25px] leading-tight">
                 Warranty Protection
-              </h1>
-              <p className="font-medium text-[18px] sm:text-[20px] text-[#898989] leading-[28px] sm:leading-[30px]">
+              </h2>
+              <p className="font-medium text-sm md:text-lg lg:text-[20px] text-[#898989] leading-snug">
                 Over 2 years
               </p>
             </div>
           </div>
 
           {/* 3rd Div - Free Shipping */}
-          <div className="flex w-full exsm:w-[300px] xsm:w-[320px] sm:w-[337px] gap-4 items-center">
-            <Image
-              src="/shipping.png"
-              alt="shipping"
-              width={60}
-              height={60}
-            />
-            <div className="flex flex-col items-start">
-              <h1 className="font-semibold text-[22px] sm:text-[25px] leading-[30px] sm:leading-[37.5px]">
+          <div className="flex items-center space-x-4 p-4 hover:bg-white/50 rounded-lg transition-colors">
+            <div className="flex-shrink-0">
+              <Image
+                src="/shipping.png"
+                alt="shipping"
+                width={48}
+                height={48}
+                className="w-12 h-12 md:w-[60px] md:h-[60px]"
+              />
+            </div>
+            <div className="flex flex-col">
+              <h2 className="font-semibold text-lg md:text-[22px] lg:text-[25px] leading-tight">
                 Free Shipping
-              </h1>
-              <p className="font-medium text-[18px] sm:text-[20px] text-[#898989] leading-[28px] sm:leading-[30px]">
+              </h2>
+              <p className="font-medium text-sm md:text-lg lg:text-[20px] text-[#898989] leading-snug">
                 Order over $150
               </p>
             </div>
           </div>
 
           {/* 4th Div - 24/7 Support */}
-          <div className="flex w-full exsm:w-[300px] xsm:w-[320px] sm:w-[337px] gap-4 items-center">
-            <Image
-              src="/cust.png"
-              alt="customer support"
-              width={60}
-              height={60}
-            />
-            <div className="flex flex-col items-start">
-              <h1 className="font-semibold text-[22px] sm:text-[25px] leading-[30px] sm:leading-[37.5px]">
+          <div className="flex items-center space-x-4 p-4 hover:bg-white/50 rounded-lg transition-colors">
+            <div className="flex-shrink-0">
+              <Image
+                src="/cust.png"
+                alt="customer support"
+                width={48}
+                height={48}
+                className="w-12 h-12 md:w-[60px] md:h-[60px]"
+              />
+            </div>
+            <div className="flex flex-col">
+              <h2 className="font-semibold text-lg md:text-[22px] lg:text-[25px] leading-tight">
                 24/7 Support
-              </h1>
-              <p className="font-medium text-[18px] sm:text-[20px] text-[#898989] leading-[28px] sm:leading-[30px]">
+              </h2>
+              <p className="font-medium text-sm md:text-lg lg:text-[20px] text-[#898989] leading-snug">
                 Dedicated support
               </p>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }
 
 export default Shopbottombar
+

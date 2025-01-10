@@ -12,8 +12,6 @@ export default function ProductGrid() {
   
   // a function to fomat a price
   
-  
-
   return (
     <>
      
@@ -88,11 +86,10 @@ export default function ProductGrid() {
                   )}
                 </div>
                 <Link href={`/shop/${index}`}>
-                
-                <Button className="w-full md:w-auto">
-                  <ShoppingCart className="mr-2 h-4 w-4" />
-                  Add to cart
-                </Button>
+                  <Button className="w-full md:w-auto">
+                    <ShoppingCart className="mr-2 h-4 w-4" />
+                    Add to cart
+                  </Button>
                 </Link>
               </CardFooter>
             </Card>

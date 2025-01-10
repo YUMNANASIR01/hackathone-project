@@ -6,17 +6,12 @@ import { ChevronRight } from 'lucide-react'
 import { products } from "@/constant/pro1"
 import Link from 'next/link'
 
-
-
-
 async function Singleproduct({ params }: { params: Promise<{ id: number }> }) {
   
   const { id } = await params;
 
   const data = products[id];
 
-  
-    
   return (
     <>
       {/* Breadcrumb Navigation Section */}
@@ -47,8 +42,6 @@ async function Singleproduct({ params }: { params: Promise<{ id: number }> }) {
     </div>
   </div>
 </div>
-
-
 
 
       {/* Main Product Section */}

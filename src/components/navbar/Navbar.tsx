@@ -1,90 +1,179 @@
 'use client'
+
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Search, Heart, ShoppingCart, UserCircle, X } from 'lucide-react'
+import { Search, Heart, ShoppingCart, UserCircle, X, Menu } from 'lucide-react'
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <nav className="relative w-full bg-white z-50">
-      {/* Main container for Navbar */}
-      <div className="max-w-[1286px] mx-auto px-4 lg:ml-[60px] 
-         sm:px-0 ml-[51px] sm:ml-0 flex items-center justify-between h-[41px] mt-[29px]">
-        
-        {/* Logo Section */}
-        <div className="flex items-left gap-1 exsm:mr-0 xsm:ml-[100px] sm:mr-[90px]">
-          <h1 className=" exsm:ml-5 xsm:text-[30px] sm:ml-0 md:ml-[-80px] font-bold font-montserrat text-[25px] ml-20 text-black flex items-center gap-4">
-            <div>
-              <Image src={'/logo.png'} alt={'Logo'} height={32} width={50} className='md:w-[40px] md:h-[25px] ' />
-            </div>
-            Furniro 
-          </h1>
-        </div>
-
-        {/* Navigation Links */}
-        <div className="hidden md:flex items-center gap-8">
-          <Link href="/" className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors">Home</Link>
-          <Link href="/shop" className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors">Shop</Link>
-          <Link href="/blog" className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors">Blog</Link>
-          <Link href="/contact" className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors">Contact</Link>
-        </div>
-
-        {/* Icons Section */}
-        <div className="hidden sm:flex md:items-center gap-6 sm:pr-10">
-          <button aria-label="Account" className="p-2 hover:bg-black/5 rounded-full transition-colors">
-            <UserCircle className="w-6 h-6" />
-          </button>
-          <button aria-label="Search" className="p-2 hover:bg-black/5 rounded-full transition-colors">
-            <Search className="w-6 h-6" />
-          </button>
-          <button aria-label="Wishlist" className="p-2 hover:bg-black/5 rounded-full transition-colors">
-            <Heart className="w-6 h-6" />
-          </button>
-          <Link href="/cart">
-            <button aria-label="Shopping Cart" className="p-2 hover:bg-black/5 rounded-full transition-colors">
-              <ShoppingCart className="w-6 h-6" />
+      {/* Main container */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Mobile menu button */}
+          <div className="flex items-center md:hidden">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:bg-black/5"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Main menu"
+            >
+              <Menu className="block h-6 w-6" aria-hidden="true" />
             </button>
-          </Link>
+          </div>
+
+          {/* Logo Section */}
+          <div className="flex-shrink-0 flex items-center">
+            <Link href="/" className="flex items-center gap-2">
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                height={32}
+                width={50}
+                className="h-8 w-auto sm:h-10"
+              />
+              <span className="font-bold font-montserrat text-xl sm:text-2xl md:text-[25px]">
+                Furniro
+              </span>
+            </Link>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center justify-center flex-1 px-2 lg:ml-[400px] lg:justify-start ">
+            <div className="flex space-x-8">
+              <Link
+                href="/"
+                className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                href="/shop"
+                className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors"
+              >
+                Shop
+              </Link>
+              <Link
+                href="/blog"
+                className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/contact"
+                className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors"
+              >
+                Contact
+              </Link>
+            </div>
+          </div>
+
+          {/* Icons Section */}
+          <div className="flex items-center gap-2 sm:gap-4">
+            <button
+              aria-label="Account"
+              className="p-2 hover:bg-black/5 rounded-full transition-colors"
+            >
+              <UserCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+            <button
+              aria-label="Search"
+              className="p-2 hover:bg-black/5 rounded-full transition-colors"
+            >
+              <Search className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+            <button
+              aria-label="Wishlist"
+              className="p-2 hover:bg-black/5 rounded-full transition-colors"
+            >
+              <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+            <Link href="/cart">
+              <button
+                aria-label="Shopping Cart"
+                className="p-2 hover:bg-black/5 rounded-full transition-colors"
+              >
+                <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Mobile View - Hamburger Menu */}
-      <div className="sm:hidden flex items-center justify-between px-4 py-0">
-        <button
-          aria-label="Menu"
-          className="p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span className="block w-6 h-1 bg-black mb-1 transition-transform duration-300" />
-          <span className="block w-6 h-1 bg-black mb-1 transition-transform duration-300" />
-          <span className="block w-6 h-1 bg-black transition-transform duration-300" />
-        </button>
-      </div>
-
-      {/* Sliding Mobile Menu */}
+      {/* Mobile menu */}
       <div
-        className={`absolute top-[70px] left-0 w-full bg-white shadow-lg z-10 transform transition-transform duration-300 ${
-          menuOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`md:hidden fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${
+          menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
+        onClick={() => setMenuOpen(false)}
       >
-        <div className="flex flex-col items-center gap-4 py-4 bg-[#fff3e3] relative">
-          {/* Close Icon */}
-          <button
-            aria-label="Close Menu"
-            className="absolute top-2 right-4 p-2 text-black hover:bg-black/5 rounded-full transition-colors"
-            onClick={() => setMenuOpen(false)}
-          >
-            <X className="w-6 h-6" />
-          </button>
-
-          <Link href="/" className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link href="/shop" className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors" onClick={() => setMenuOpen(false)}>Shop</Link>
-          <Link href="/blog" className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors" onClick={() => setMenuOpen(false)}>Blog</Link>
-          <Link href="/contact" className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors" onClick={() => setMenuOpen(false)}>Contact</Link>
+        <div
+          className={`fixed inset-y-0 left-0 w-64 bg-white transform transition-transform duration-300 ease-in-out ${
+            menuOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="pt-5 pb-6 px-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  height={32}
+                  width={50}
+                  className="h-8 w-auto"
+                />
+                <span className="ml-2 font-bold font-montserrat text-xl">
+                  Furniro
+                </span>
+              </div>
+              <button
+                type="button"
+                className="rounded-md p-2 text-black hover:bg-black/5"
+                onClick={() => setMenuOpen(false)}
+              >
+                <X className="h-6 w-6" aria-hidden="true" />
+              </button>
+            </div>
+            <div className="mt-6">
+              <nav className="grid gap-y-4">
+                <Link
+                  href="/"
+                  className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors px-3 py-2 rounded-md hover:bg-black/5"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/shop"
+                  className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors px-3 py-2 rounded-md hover:bg-black/5"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Shop
+                </Link>
+                <Link
+                  href="/blog"
+                  className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors px-3 py-2 rounded-md hover:bg-black/5"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Blog
+                </Link>
+                <Link
+                  href="/contact"
+                  className="text-base font-medium font-poppins text-black hover:text-black/70 transition-colors px-3 py-2 rounded-md hover:bg-black/5"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Contact
+                </Link>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
-  );
+  )
 }
+
